@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yerlesim Plani Bildirici</title>
+
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+
+    <div class="container text-center">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Yerleşim Planı Bildirici</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-autp">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Anasayfa <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="use.html">Nasıl Kullanılır</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Hakkımızda</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+
+            <div class="file-upload">
+                <div class="image-upload-wrap">
+                    <input id="fileInputArea" class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                    <div class="drag-text">
+                        <h3>Öğrenci Listesi Resmini Buraya Sürükle</h3>
+                    </div>
+                </div>
+                <div class="file-upload-content">
+                    <img class="file-upload-image" src="#" alt="your image" />
+                    <div class="image-title-wrap">
+                        <button type="button" onclick="removeUpload()" class="remove-image">Kaldır <span class="image-title">Yüklenen Resim</span></button>
+                    </div>
+                </div>
+            </div>
+            <center><button id="btnSend" class="btn btn-outline-info">Listeyi Oku Ve Bildirim Gönder</button></center>
+
+        <br/><br/>
+
+        <div id="loading" class="alert alert-danger">Liste Üzerinden Resim İşleme Ve Bildirim Gönderme Yapılıyor. Lütfen Bekleyiniz...</div>
+
+        <div id="ogrenciarea">
+            <h4>Listede Bulunan İsimler</h4>
+            <hr/>
+            <div id="ogrenciler" class="row">
+                        
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="./fileupload.js"></script>
+    <script src="./app.js"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

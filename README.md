@@ -18,7 +18,7 @@ test
 ## Kullanilan Teknolojiler
 - Node.Js
 - Express.Js
-- React.Js
+- Tesseract.Js
 - Flutter
 - Socket.Io
 
