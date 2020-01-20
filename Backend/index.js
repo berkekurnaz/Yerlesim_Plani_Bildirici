@@ -1,9 +1,11 @@
 const express = require("express");
-const webpush = require("web-push");
 const bodyParser = require("body-parser");
 const path = require("path");
 
 const { createWorker } = require("tesseract.js");
+
+var http = require('http').createServer(express);
+var io = require('socket.io')(http);
 
 var creatorImageName = require("./helper/creatorImageName");
 var myImageHelper = require("./helper/myImageHelper");
@@ -136,6 +138,7 @@ app.post("/test", upload.single('file'), (req, res) => {
             console.log("Öğrenci Koltuk : " + element.koltuk);
         });
     }).then(() => {
+        io.emit('students list', ogrenciler);
         return res.json(ogrenciler);
     });
 
@@ -143,6 +146,16 @@ app.post("/test", upload.single('file'), (req, res) => {
 });
 
 const port = 5000;
+
+io.on('connection', function(socket){
+    console.log('user connected');
+
+
+
+    socket.on('disconnect', function(){
+      console.log('user disconnected');
+    });
+});
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
 
