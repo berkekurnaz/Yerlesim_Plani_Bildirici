@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Yerlesim Plani Bildirici</title>
 </head>
 <body>
-    <p>Hello World</p>
 
+    <h1><%= title %></h1>
+
+    <ul>
+        <% for(var i=0; i<usage.length; i++) {%>
+           <li><b><%= usage[i].id %> -)</b> <%= usage[i].title %></li>
+        <% } %>
+    </ul>
+
+    <div>
+        <ul>
+            <li><b>KULLANILAN TEKNOLOJİLER</b></li>
+            <li>Node.Js</li>
+            <li>Express.Js</li>
+            <li>Socket.Io</li>
+            <li>Flutter</li>
+        </ul>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>    

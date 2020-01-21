@@ -1,12 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const ejs = require("ejs");
 
 const { createWorker } = require("tesseract.js");
 
 const app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 
 var creatorImageName = require("./helper/creatorImageName");
 var myImageHelper = require("./helper/myImageHelper");
@@ -49,7 +56,13 @@ class Ogrenci {
 }
 
 app.get("/", (req,res) => {
-    res.render("index.html");
+    const usage = [
+        {title: "apple", id: 1},
+        {title: "banana", id: 2},
+        {title: "orange", id: 3},
+        {title: "grape", id: 4},
+];
+    res.render("index.ejs", {title: "Yerleşim Plani Bildirici App - Backend", usage: usage});
 });
 
 app.post("/ocr", upload.single('file'), (req, res) => {
