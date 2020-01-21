@@ -4,7 +4,8 @@ const path = require("path");
 
 const { createWorker } = require("tesseract.js");
 
-var http = require('http').createServer(express);
+const app = express();
+var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 var creatorImageName = require("./helper/creatorImageName");
@@ -31,8 +32,6 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-const app = express();
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 
@@ -48,6 +47,10 @@ class Ogrenci {
     }
 
 }
+
+app.get("/", (req,res) => {
+    res.render("index.html");
+});
 
 app.post("/ocr", upload.single('file'), (req, res) => {
 
@@ -138,7 +141,7 @@ app.post("/test", upload.single('file'), (req, res) => {
             console.log("Öğrenci Koltuk : " + element.koltuk);
         });
     }).then(() => {
-        io.emit('students list', ogrenciler);
+        io.emit('students_list', ogrenciler);
         return res.json(ogrenciler);
     });
 
@@ -157,7 +160,7 @@ io.on('connection', function(socket){
     });
 });
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+http.listen(port, () => console.log(`Server started on port ${port}`));
 
 
 
